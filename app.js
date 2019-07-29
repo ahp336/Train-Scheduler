@@ -20,7 +20,7 @@ var frequency ="";
 
 
 
-$("#data-add").on("click", function(){
+$("#data-add").on("click", function(event){
     event.preventDefault();
 
     trainName = $("#name-input").val();
@@ -34,33 +34,47 @@ $("#data-add").on("click", function(){
         trainTime : trainTime ,
         frequency: frequency,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
-
     });
-    
-    database.ref().on("child_added", function (snapshot){
-        var XZ = snapshot.val();
-        console.log(snapshot.val());
 
-        console.log(XZ.trainName)
-        console.log(XZ.destination)
-        console.log(XZ.trainTime )
-        console.log(XZ.frequency)
-
-        
-
-
-
-    });
-    
-    
-    
-    
-    
     console.log(trainName)
     console.log(destination)
     console.log(trainTime )
     console.log(frequency)
 
+    alert("Train Schedule Added")
+    // Empty all the text-boxes
+    $("#name-input").val("");
+    $("#des-input").val("");
+    $("#time-input").val("");
+    $("#min-input").val("");
+});
 
 
+    
+database.ref().on("child_added", function (childSnapshot){
+   var XZ = childSnapshot.val();
+    console.log(childSnapshot.val());
+
+    var trainName = childSnapshot.val().name
+    var destination = childSnapshot.val().des
+    var trainTime = childSnapshot.val().time
+    var frequency = childSnapshot.val().min
+
+    console.log(XZ.trainName)
+    console.log(XZ.destination)
+    console.log(XZ.trainTime )
+    console.log(XZ.frequency)
+
+    var minLeft = moment().diff(moment(trainTime,"X"), "minutes");
+    
+    
+    var newRow = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(destination),
+        $("<td>").text(trainTime),
+        $("<td>").text(minLeft),
+        $("<td>").text(frequency),
+    );
+
+        $("#time-schedule > tbody").append(newRow);
 });

@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 <link rel="stylesheet" href="style.css">
-<title>Employee Tracker</title>
+<title>Train Schedule</title>
 </head>
 <body>
     <div class="container">
@@ -18,27 +18,20 @@
 
         <div class="card">
             <h1 class="card-header">Current Train Schedule</h1>
-            <table class="table">
+            <table class="table" id="time-schedule">
                 <thead>
                     <tr>
                         <th scope="col">Train Name</th>
                         <th scope="col">Destination </th>
-                        <th scope="col">Frequency</th>
                         <th scope="col">Next Arrival</th>
+                        <th scope="col">Frequency</th>
                         <th scope="col">Minutes Away</th>
                     </tr>
                 </thead>
 
-                <thead>
-                        <tr>
-                            <th scope="col" id="name-display"></th>
-                            <th scope="col" id="role-display"> </th>
-                            <th scope="col" id="date-diaplay"></th>
-                            <th scope="col" id="work-display"></th>
-                            <th scope="col" id="rate-display"></th>
-                            <th scope="col" id="total-display"></th>
-                        </tr>
-                    </thead>
+                <tbody>
+                        
+                </tbody>
 
             </table>
 
@@ -72,6 +65,7 @@
                 <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="app.js"></script>
 
