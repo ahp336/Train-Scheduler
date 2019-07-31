@@ -52,7 +52,7 @@ $("#data-add").on("click", function(event){
 
     
 database.ref().on("child_added", function (childSnapshot){
-   var XZ = childSnapshot.val();
+   var snapshot = childSnapshot.val();
     console.log(childSnapshot.val());
 
     var trainName = childSnapshot.val().name
@@ -60,20 +60,20 @@ database.ref().on("child_added", function (childSnapshot){
     var trainTime = childSnapshot.val().time
     var frequency = childSnapshot.val().min
 
-    console.log(XZ.trainName)
-    console.log(XZ.destination)
-    console.log(XZ.trainTime )
-    console.log(XZ.frequency)
+    console.log(snapshot.trainName)
+    console.log(snapshot.destination)
+    console.log(snapshot.trainTime )
+    console.log(snapshot.frequency)
 
-    var minLeft = moment().diff(moment(trainTime,"X"), "minutes");
+   
     
     
     var newRow = $("<tr>").append(
-        $("<td>").text(trainName),
-        $("<td>").text(destination),
-        $("<td>").text(trainTime),
-        $("<td>").text(minLeft),
-        $("<td>").text(frequency),
+        $("<td>").text(snapshot.trainName),
+        $("<td>").text(snapshot.destination),
+        $("<td>").text(snapshot.trainTime),
+        $("<td>").text(snapshot.minLeft),
+        $("<td>").text(snapshot.frequency),
     );
 
         $("#time-schedule > tbody").append(newRow);
